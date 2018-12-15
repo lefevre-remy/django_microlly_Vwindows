@@ -6,7 +6,7 @@ Version windows du projet microlly
 il est nécessaire d'avoir installer :
 - python 3
 - virtualenv (via la commande : pip install virtualenv)
-- pillow (va la commande : pip install Pillow
+- pillow (via la commande : pip install Pillow
 
 
 # Mise en place de l'environnement sur windows

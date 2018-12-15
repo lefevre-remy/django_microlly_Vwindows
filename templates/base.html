@@ -11,12 +11,6 @@
             <a class="navbar-brand" href="/">Microlly</a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link {% if "/newpost/" in request.path %}active{% endif %}" href="{% url 'accounts:login' %}">Create new post</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if "/lastposts/" in request.path %}active{% endif %}" href="{% url 'accounts:login' %}">Last posts</a>
-                    </li>
                 </ul>
                 <ul class="navbar-nav text-right">
                     <li class="nav-item">

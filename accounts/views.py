@@ -9,10 +9,10 @@ def signup_view(request):
              user = form.save()
              #  log the user in
              login(request, user)
-             return redirect('articles:list')
+             return redirect('microblog:list')
     else:
         form = UserCreationForm()
-    return render(request, 'accounts/signup.html', { 'form': form })
+    return render(request, 'signup.html', { 'form': form })
 
 def login_view(request):
     if request.method == 'POST':
@@ -24,12 +24,12 @@ def login_view(request):
             if 'next' in request.POST:
                 return redirect(request.POST.get('next'))
             else:
-               return redirect('articles:list')
+               return redirect('microblog:list')
     else:
         form = AuthenticationForm()
-    return render(request, 'accounts/login.html', { 'form': form })
+    return render(request, 'login.html', { 'form': form })
 
 def logout_view(request):
     if request.method == 'POST':
             logout(request)
-            return redirect('articles:list')
+            return redirect('microblog:article_list')

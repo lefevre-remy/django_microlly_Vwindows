@@ -11,7 +11,17 @@
             <a class="navbar-brand" href="/">Microlly</a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"> 
+                        <a class="nav-link {% if "/newpost/" in request.path %}active{% endif %}" href="{% url 'microblog:article_create' %}">Create new post</a> 
+                    </li> 
+                    <li class="nav-item"> 
+                        <a class="nav-link {% if "/lastposts/" in request.path %}active{% endif %}" href="{% url 'microblog:article_detail' %}">Last posts</a> 
+                    </li>
+                    <li class="nav-item"> 
+                        <a class="nav-link {% if "/myposts/" in request.path %}active{% endif %}" href="{% url 'microblog:article_list' %}">Mes posts</a> 
+                    </li>
                 </ul>
+                {% if user.is_authenticated %}
                 <ul class="navbar-nav text-right">
                     <li class="nav-item">
                         <a class="nav-link {% if "/login/" in request.path %}active{% endif %}" href="{% url 'accounts:login' %}">Login</a>
@@ -19,9 +29,14 @@
                     <li class="nav-item">
                         <a class="nav-link {% if "/Register/" in request.path %}active{% endif %}" href="{% url 'accounts:signup' %}">Register</a>
                     </li>
+                {% else %}
                     <li class="nav-item">
-                        <a class="nav-link {% if "/logout/" in request.path %}active{% endif %}" href="{% url 'accounts:logout' %}">Log out</a>
+                            <form class="form-inline" action="{% url 'accounts:logout' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn btn-outline-light" type="submit">LOGOUT</button>
+                            </form>
                     </li>
+                {% endif %}
                 </ul>
             </div>
         </nav>

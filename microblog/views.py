@@ -1,15 +1,17 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from microblog.models import Post
+
+from microblog.models import *
+from microblog import forms
 
 # Create your views here.
 def index(request):
     post = Post.objects.all()
-    return render(request, 'index.html', {'posts':post})
+    return render(request, 'base.html', {'posts':post})
 
 def article_list(request):
     articles = Article.objects.all().order_by('date')
-    return render(request, 'microblog/article_list.html', { 'articles': articles })
+    return render(request, 'article_list.html', { 'articles': articles })
 
 def article_detail(request, slug):
     # return HttpResponse(slug)

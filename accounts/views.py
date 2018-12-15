@@ -1,6 +1,9 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
+
+# Create your views here.
 
 def signup_view(request):
     if request.method == 'POST':
@@ -9,10 +12,10 @@ def signup_view(request):
              user = form.save()
              #  log the user in
              login(request, user)
-             return redirect('microblog:list')
+             return redirect('microblog: article_list')
     else:
         form = UserCreationForm()
-    return render(request, 'signup.html', { 'form': form })
+        return render(request, 'signup.html', { 'form': form })
 
 def login_view(request):
     if request.method == 'POST':
@@ -24,7 +27,7 @@ def login_view(request):
             if 'next' in request.POST:
                 return redirect(request.POST.get('next'))
             else:
-               return redirect('microblog:list')
+               return redirect('microblog: article_list')
     else:
         form = AuthenticationForm()
     return render(request, 'login.html', { 'form': form })
@@ -32,4 +35,6 @@ def login_view(request):
 def logout_view(request):
     if request.method == 'POST':
             logout(request)
-            return redirect('microblog:article_list')
+            return redirect('microblog:index')
+    else:
+        return redirect('microblog:index')

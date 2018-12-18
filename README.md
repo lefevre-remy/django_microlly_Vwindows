@@ -17,5 +17,14 @@ executer les commandes suivantes dans le dossier où vous souhaiter avoir votre 
 - cd microlly_env/Scripts
 - activate.bat
 
+# Récuperation et lancement du projet microlly
 
+une fois votre envirronnement lancé vous allez pouvoir récupérer le projet.
+
+- cd ..
+- mkdir microlly
+- git clone https://github.com/lefevre-remy/django_microlly_Vwindows.git microlly
+- cd microlly
+- pip install -r requirements.txt
+- python manage.py runserver
 
